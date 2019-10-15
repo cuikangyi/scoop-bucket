@@ -1,0 +1,21 @@
+{
+    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
+    "description": "A Windows GUI based on Clash",
+    "version": "0.7.11",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.7.11/Clash.for.Windows-0.7.11-win.7z",
+    "hash": "3fb9a5d2829b10506b407b335b78eb0ee6298de83765c6f6a037a8dcb890d175",
+    "bin": "Clash for Windows.exe",
+    "shortcuts": [
+        [
+            "Clash for Windows.exe",
+            "Clash for Windows"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Fndroid/clash_for_windows_pkg"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-win.7z"
+    }
+}
