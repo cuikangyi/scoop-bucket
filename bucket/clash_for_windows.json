@@ -5,17 +5,35 @@
     "license": "GPL-3.0-only",
     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.8.5/Clash.for.Windows-0.8.5-win.7z",
     "hash": "1f5b6aac67ca0cbd8c289d15bd22fc8b7aea670e49a6f2f37988591d426e31db",
-    "bin": "Clash for Windows.exe",
-    "shortcuts": [
-        [
-            "Clash for Windows.exe",
-            "Clash for Windows"
-        ]
-    ],
     "checkver": {
         "github": "https://github.com/Fndroid/clash_for_windows_pkg"
     },
     "autoupdate": {
         "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-win.7z"
-    }
+    },
+    "pre_install": [
+        "$config_dir = \"$dir\\resources\\static\\files\"",
+        "if (!(Test-Path \"$config_dir\\config.yml\")) {",
+        "    Copy-Item \"$config_dir\\default\\config.yml\" \"$config_dir\\config.yml\" | Out-Null",
+        "}",
+        "if(!(Test-Path(\"$config_dir\\config.yaml\"))) {",
+        "    New-Item \"$config_dir\\config.yaml\" -type file | Out-Null",
+        "}",
+        "if (!(Test-Path \"$config_dir\\Country.mmdb\")) {",
+        "    Copy-Item \"$config_dir\\default\\Country.mmdb\" \"$config_dir\\Country.mmdb\" | Out-Null",
+        "}"
+    ],
+    "persist": [
+        "resources\\static\\files\\config.yml",
+        "resources\\static\\files\\config.yaml",
+        "resources\\static\\files\\Country.mmdb",
+        "resources\\static\\files\\logs",
+        "resources\\static\\files\\profiles"
+    ],
+    "shortcuts": [
+        [
+            "Clash for Windows.exe",
+            "Clash for Windows"
+        ]
+    ]
 }
